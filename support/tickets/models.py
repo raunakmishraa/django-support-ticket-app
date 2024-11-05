@@ -41,13 +41,3 @@ class ticket_model(models.Model):
     ticket_number=models.IntegerField('Ticket Number')
     status=models.CharField('Status',choices=status_choices,null=True,blank=True,max_length=30,default='Reported')
     created_at=models.DateTimeField('Created At',default=now_time)
-
-    def save(self, *args, **kwargs):
-         if self.pk:
-           #record updated
-           send_mail()
-         else:
-           #new record
-
-#and call the super save method of class. 
-super(ticket_model, self).save(*args, **kwargs)
