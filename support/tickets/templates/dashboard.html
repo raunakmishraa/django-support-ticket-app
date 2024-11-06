@@ -1,0 +1,163 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load bootstrap_icons %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTC Electricals</title>
+    <style>
+        .card-box {
+            position: relative;
+            color: #fff;
+            padding: 20px 10px 40px;
+            margin: 20px 0px;
+        }
+        .card-box:hover {
+            text-decoration: none;
+            color: #ADCBD7;
+        }
+        .card-box:hover .icon i {
+            font-size: 100px;
+            transition: 1s;
+            -webkit-transition: 1s;
+        }
+        .card-box .inner {
+            padding: 5px 10px 0 10px;
+        }
+        .card-box h3 {
+            font-size: 27px;
+            font-weight: bold;
+            margin: 0 0 8px 0;
+            white-space: nowrap;
+            padding: 0;
+            text-align: left;
+        }
+        .card-box p {
+            font-size: 15px;
+        }
+        .card-box .icon {
+            position: absolute;
+            top: auto;
+            bottom: 5px;
+            right: 5px;
+            z-index: 0;
+            font-size: 72px;
+            color: rgba(0, 0, 0, 0.15);
+        }
+        .card-box .card-box-footer {
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            text-align: center;
+            padding: 3px 0;
+            color: #ADCBD7;
+            background: rgba(0, 0, 0, 0.1);
+            width: 100%;
+            text-decoration: none;
+        }
+        .card-box:hover .card-box-footer {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        .bg-blue {
+            background-color: #1A374D !important;
+        }
+        .bg-green {
+            background-color: #9A55F3 !important;
+        }
+        .bg-orange {
+            background-color: #FF731D !important;
+        }
+        .bg-red {
+            background-color: #d9534f !important;
+        }
+        table tbody tr{
+            border-bottom-color: #9A55F3 !important;
+        }
+        table tbody tr td{
+            color: #ADCBD7 !important;
+        }
+    </style>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    {% include 'header.html' %}
+    <section style="min-height: 100%; background-color: #406882;">
+        <!-- Dashboard Section -->
+        <div class="container" style="margin: 0; width: 100%; max-width: 100%; padding: 9px;">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6">
+                    <div class="card-box bg-blue">
+                        <div class="inner">
+                            <h3> {{ statistics.raised_issues }} </h3>
+                            <p> Total Issues Raised </p>
+                        </div>
+                        <div class="icon">
+                            <i aria-hidden="true">{% bs_icon 'bug-fill' size='1.3em' %}</i>
+                        </div>
+                        <a href="{% url 'all_issues' %}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <div class="card-box bg-green">
+                        <div class="inner">
+                            <h3> {{ statistics.inprogress_issues }} </h3>
+                            <p> In Progress </p>
+                        </div>
+                        <div class="icon">
+                            <i aria-hidden="true">{% bs_icon 'cpu-fill' size='1.3em' %}</i>
+                        </div>
+                        <a href="{% url 'progress_issues' %}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="card-box bg-orange">
+                        <div class="inner">
+                            <h3> {{ statistics.solved_issues }} </h3>
+                            <p> Issues Solved </p>
+                        </div>
+                        <div class="icon">
+                            <i aria-hidden="true">{% bs_icon 'check-circle-fill' size='1.3em' %}</i>
+                        </div>
+                        <a href="{% url 'solved_issues' %}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Recent Issues Section -->
+        <div class="table-responsive" style="margin: 0; width: 100%; max-width: 100%; padding: 9px;">
+            {% if issues.count > 0 %}
+                <h2 style="color: #ADCBD7; text-align: center; padding: 6px;">Recent Issues</h2>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Ticket No.</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Priority</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for issue in issues %}
+                            <tr>
+                                <th scope="row"><a href="{% url 'issues_description' issue.ticket_number %}" style="text-decoration: none; color: #1A374D;">
+                                    {{ issue.ticket_number }}
+                                </a></th>
+                                <td>{{ issue.subject }}</td>
+                                <td>{{ issue.priority }}</td>
+                                <td>{{ issue.status }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>               
+            {% else %}
+                <p style="color: #ADCBD7; text-align: center;">No issues raised yet, <a href="{% url 'raise_issue' %}" style="color: #fff; text-decoration: none;">Raise one now.</a></p>
+            {% endif %}
+        </div>
+    </section>
+    {% include 'footer.html' %}
+</body>
+</html>
