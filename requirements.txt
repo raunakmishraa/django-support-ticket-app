@@ -1,0 +1,7 @@
+smtplib
+environ
+os
+pathlib
+random
+django
+django-admin
