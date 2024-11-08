@@ -1,13 +1,10 @@
-import environ
 import smtplib
 from email.message import EmailMessage
 
-env = environ.Env()
-environ.Env.read_env()
 
 def send_issue_status_email(user,ticketNo,status,raised_date):
     email_id = 'codersbuzz9@gmail.com'
-    pswd = env('SENDER_EMAIL_PASS')
+    pswd = creaedoeycydpbnm
     email = EmailMessage()
     email['Subject'] = f'Issue #{ticketNo} {status} !!'
     email['From'] = email_id
