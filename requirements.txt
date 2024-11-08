@@ -1,5 +1,4 @@
 environ
-os
 pathlib
 random
 django
