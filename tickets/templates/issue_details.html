@@ -1,0 +1,62 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load bootstrap_icons %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTC Electricals</title>
+    <style>
+        .description_view .mb-3 input, .description_view .mb-3 textarea{
+            background-color: #6988AB !important;
+            color: #ADCBD7 !important;     
+            border-color: #ADCBD7 !important;       
+        }
+        .description_view .mb-3 input:focus, .description_view .mb-3 textarea:focus{
+            box-shadow: 0 0 0 .25rem rgba(26, 55, 77, 0.25) !important;
+            border-color: rgba(26, 55, 77, 0.25) !important;
+        }
+        .description_view .mb-3 input::placeholder, .description_view .mb-3 textarea::placeholder{
+            color: #ADCBD7 !important;
+        }
+        .description_view .mb-3 label{
+            color: #ADCBD7 !important;
+        }
+    </style>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    {% include 'header.html' %}
+    <!-- All Issues Section -->
+    <div class="description_view" style="background-color: #406882; margin: 0; width: 100%; max-width: 100%; padding: 9px; min-height: 100%;">
+        <h2 style="color: #ADCBD7; text-align: center; padding: 6px;">Issue Description</h2>
+        <div class="mb-3">
+            <label for="ticket_no" class="form-label">Ticket Number</label>
+            <input value="{{ issue.ticket_number }}" type="text" class="form-control" id="formGroupExampleInput" name="ticket_no" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <input value="{{ issue.subject }}" type="text" class="form-control" id="formGroupExampleInput2" name="subject" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea placeholder="{{ issue.issue }}" rows="3" type="text" class="form-control" id="formGroupExampleInput2" name="description" disabled></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="priority" class="form-label">Priority</label>
+            <input value="{{ issue.priority }}" type="text" class="form-control" id="formGroupExampleInput2" name="priority" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <input value="{{ issue.status }}" type="text" class="form-control" id="formGroupExampleInput2" name="status" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="created_at" class="form-label">Raised at:</label>
+            <input value="{{ issue.created_at }}" type="text" class="form-control" id="formGroupExampleInput2" name="created_at" disabled>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,77 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load bootstrap_icons %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTC Electricals</title>
+    <style>
+        .login-form{
+            width: 100%;
+            max-width: 100%;
+            padding: 12px;
+            min-height: 100%;
+        }
+        .login-form .mb-3 input, .login-form .mb-3 textarea, .login-form .mb-3 select{
+            background-color: #6988AB !important;
+            color: #ADCBD7 !important;     
+            border-color: #ADCBD7 !important;       
+        }
+        .login-form .mb-3 input:focus, .login-form .mb-3 textarea:focus, .login-form .mb-3 select:focus{
+            box-shadow: 0 0 0 .25rem rgba(26, 55, 77, 0.25) !important;
+            border-color: rgba(26, 55, 77, 0.25) !important;
+        }
+        .login-form .mb-3 input::placeholder, .login-form .mb-3 textarea::placeholder{
+            color: #ADCBD7 !important;
+        }
+        #login_button:hover{
+            background-color: #1A374D !important;
+        }
+        #login_button:active{
+            background-color: #1A374D !important;
+        }
+        #login_button:focus{
+            box-shadow: 0 0 0 .25rem rgba(26, 55, 77, 0.25) !important;
+            border-color: rgba(26, 55, 77, 0.25) !important;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <section class="main" style="background-color: #406882; color: #ADCBD7;">
+        <h2 style="color: #ADCBD7; text-align: center; padding: 6px;">Raise an issue</h2>
+        <form method="POST" class="login-form" style="margin-bottom: 0;">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email" name="user_email" class="form-control" id="exampleFormControlInput1" placeholder="{{ user.username }}" value="{{ user.username }}" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Subject</label>
+                <input class="form-control" name="subject" id="exampleFormControlTextarea1" placeholder="Subject of Issue" type="text" required></input>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea2" class="form-label">Issue</label>
+                <textarea class="form-control" name="issue" id="exampleFormControlTextarea2" placeholder="Issue details" type="text" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea3" class="form-label">Priority</label>
+                <!-- <input class="form-control" name="priority" id="exampleFormControlTextarea3" placeholder="Priority" type="text" required></input> -->
+                <select class="form-select" aria-label="Default select example" name="priority" required>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                    <option value="Urgent">Urgent</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-outline-primary" style="color: #ADCBD7; border-color: #ADCBD7;" id="login_button">Submit Issue</button>
+            </div>
+        </form>
+    </section>
+    {% include 'footer.html' %}
+</body>
+</html>

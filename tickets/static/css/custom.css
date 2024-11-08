@@ -1,0 +1,66 @@
+/* CONTACT PAGE */
+.contact_form{
+    padding-right: 12px;
+}
+
+.field input {
+    font-family: 'Open sans', sans-serif;
+    padding: 7px 10px 8px 60px;
+    margin: 12px;
+    font-size: 14px;
+    color: #fff7e9;
+    border: 1px solid #FF731D;
+    border-radius: 4px;
+    background-color: #5f9df7;
+    max-width: 100%;
+    width: 100%;
+}
+  
+.field {
+    position: relative;
+}
+  
+.field label {
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    font-size: 16px;
+    color: #fff7e9;
+    transition: .3s all ease-out;
+    cursor: text;
+}
+  
+.field.active input,  .field.active textarea {
+    border: 1px solid #FF731D;
+    outline: none;
+    padding-left: 17px;
+    color: #fff7e9;
+}
+  
+.field.active label {
+    top: 0px;
+    left: 17px;
+    padding: 0px 2px;
+    font-size: 11px;
+    color: #fff7e9;
+    background: #5f9df7;
+}
+
+.contact_form button:hover{
+    background-color: #FF731D;
+}
+
+/* Header CSS */
+.dropdown-toggle::after{
+    display: none !important;
+}
+
+.dropdown-menu {
+    background-color: #fff7e9 !important;
+    border-color: #FF731D !important;
+}
+
+.dropdown-item{
+    color: #2d3748 !important;
+}
+
