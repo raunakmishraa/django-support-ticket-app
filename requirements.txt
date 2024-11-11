@@ -1,3 +1,4 @@
 environ
 django
 django-admin
+gunicorn
