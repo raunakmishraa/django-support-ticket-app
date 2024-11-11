@@ -22,4 +22,4 @@ if __name__ == '__main__':
     main()
 
 
-DISABLE_COLLECTSTATIC = 1
+heroku config:set DISABLE_COLLECTSTATIC=1
