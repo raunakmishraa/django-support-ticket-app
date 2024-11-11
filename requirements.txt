@@ -2,3 +2,4 @@ environ
 django
 django-admin
 gunicorn
+django-bootstrap-v5
